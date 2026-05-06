@@ -1,7 +1,7 @@
 <aside
-  class="fixed left-0 top-0 z-40 h-screen w-64 overflow-x-hidden border-r border-gray-100 bg-white pt-14 transition-transform md:translate-x-0"
+  class="fixed left-0 top-0 z-40 h-screen w-64 border-r border-gray-100 bg-white pt-14 transition-transform md:translate-x-0 flex flex-col"
   [class.translate-x-0]="isOpen()" [class.-translate-x-full]="!isOpen()" aria-label="Sidenav">
-  <div class=" w-full h-full overflow-x-hidden overflow-y-auto bg-white px-3 py-5 pb-24">
+  <div class="w-full flex-1 overflow-x-hidden overflow-y-auto bg-white px-3 py-5">
     <ul class="space-y-2">
       @for (item of mainNavItems(); track item.route) {
       <li>
@@ -58,20 +58,22 @@
     </ul>
     }
   </div>
-  <div
-    class="absolute bottom-0 left-0 justify-center p-4 space-x-4 w-full flex bg-white z-20 border-t border-slate-100">
-    @if (isAuthenticated()) {
-    <button (click)="onLogout()"
-      class="inline-flex items-center w-full px-4 py-2.5 text-sm font-semibold text-center text-red-600 bg-red-50 rounded-xl hover:bg-red-100 transition-colors">
-      <svg lucideLogOut class="w-4 h-4 mr-2"></svg>
-      Cerrar sesión
-    </button>
-    } @else {
-    <button (click)="onLogin()"
-      class="inline-flex items-center w-full px-4 py-2.5 text-sm font-semibold text-center text-emerald-700 bg-emerald-50 rounded-xl hover:bg-emerald-100 transition-colors cursor-pointer">
-      <svg lucidePlusCircle class="w-4 h-4 mr-2"></svg>
-      Iniciar sesión
-    </button>
-    }
+
+  <div class="p-4 w-full flex bg-white z-50 border-t border-slate-100">
+    <div class="w-full">
+      @if (isAuthenticated()) {
+      <button (click)="onLogout()"
+        class="inline-flex items-center w-full px-4 py-2.5 text-sm font-semibold text-center text-red-600 bg-red-50 rounded-xl hover:bg-red-100 transition-colors">
+        <svg lucideLogOut class="w-4 h-4 mr-2"></svg>
+        Cerrar sesión
+      </button>
+      } @else {
+      <button (click)="onLogin()"
+        class="inline-flex items-center w-full px-4 py-2.5 text-sm font-semibold text-center text-emerald-700 bg-emerald-50 rounded-xl hover:bg-emerald-100 transition-colors cursor-pointer">
+        <svg lucidePlusCircle class="w-4 h-4 mr-2"></svg>
+        Iniciar sesión
+      </button>
+      }
+    </div>
   </div>
 </aside>
