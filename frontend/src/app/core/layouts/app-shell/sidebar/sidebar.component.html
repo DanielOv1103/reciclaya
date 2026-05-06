@@ -1,6 +1,7 @@
 <aside
   class="fixed left-0 top-0 z-40 h-screen w-64 border-r border-gray-100 bg-white pt-14 transition-transform md:translate-x-0 flex flex-col"
-  [class.translate-x-0]="isOpen()" [class.-translate-x-full]="!isOpen()" aria-label="Sidenav">
+  [class.translate-x-0]="isOpen()" [class.-translate-x-full]="!isOpen()" aria-label="Sidenav"
+  style="padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); padding-bottom: calc(constant(safe-area-inset-bottom) + 12px);">
   <div class="w-full flex-1 overflow-x-hidden overflow-y-auto bg-white px-3 py-5">
     <ul class="space-y-2">
       @for (item of mainNavItems(); track item.route) {
@@ -59,7 +60,7 @@
     }
   </div>
 
-  <div class="p-4 w-full flex bg-white z-50 border-t border-slate-100">
+  <div class="px-4 py-3 w-full flex bg-white z-50 border-t border-slate-100">
     <div class="w-full">
       @if (isAuthenticated()) {
       <button (click)="onLogout()"
