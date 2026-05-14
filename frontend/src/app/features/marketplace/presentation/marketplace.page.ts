@@ -33,6 +33,7 @@ import { MarketplaceProductCardComponent } from './components/marketplace-produc
 import { DefaultChatBubbleComponent } from '../../../shared/ui/default-chat-bubble/default-chat-bubble.component';
 import { AssistantChatHttpService } from '../../assistant-chat/infrastructure/assistant-chat.http.service';
 import { MarketplaceEcoChatFacade } from '../application/marketplace-eco-chat.facade';
+import { AuthFacade } from '../../auth/services/auth.facade';
 
 @Component({
   selector: 'app-marketplace-page',
@@ -55,6 +56,7 @@ import { MarketplaceEcoChatFacade } from '../application/marketplace-eco-chat.fa
 export class MarketplacePageComponent implements OnInit, AfterViewInit, OnDestroy {
   private readonly facade = inject(MarketplaceFacade);
   private readonly ecoChatFacade = inject(MarketplaceEcoChatFacade);
+  private readonly authFacade = inject(AuthFacade);
   private readonly protectedActions = inject(ProtectedActionService);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
@@ -87,6 +89,7 @@ export class MarketplacePageComponent implements OnInit, AfterViewInit, OnDestro
   protected readonly ecoTyping = this.ecoChatFacade.typing;
   protected readonly ecoShowGoToMainChatCta = this.ecoChatFacade.showGoToMainChatCta;
   protected readonly ecoDisabledInput = this.ecoChatFacade.disabledInput;
+  protected readonly isAuthenticated = this.authFacade.isAuthenticated;
 
   protected readonly filtersForm = this.fb.nonNullable.group({
     query: [''],
